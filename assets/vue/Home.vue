@@ -1,74 +1,40 @@
 <template>
-  <div id="app">
-    <header>
-      <h1>{{ title }}</h1>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="#">Accueil</a></li>
-        <li><a href="login">Se connecter</a></li>
-        <li><a href="#">À propos</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-    <main>
-      <p>{{ message }}</p>
-    </main>
-    <footer>
-      <p>&copy; 2025 Mon Application Vue</p>
-    </footer>
-  </div>
+  <v-container class="fill-height d-flex justify-center align-center">
+    <v-card class="pa-6 text-center" elevation="10" max-width="400">
+      <v-card-title class="text-h5 font-weight-bold">
+        Accueil
+      </v-card-title>
+      <v-card-text>
+        Un accueil vide.
+        Connectez-vous pour accéder à la page ci dessous.
+      </v-card-text>
+      <v-btn color="primary" size="large" class="mt-4" :to="{ name: 'Emby' }" :disabled="!$root.user">
+        EMBY
+      </v-btn>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: 'LoginPage',
   data() {
-    return {
-      title: 'Mon Application Vue',
-      message: 'Bienvenue dans mon application Vue.js!'
-    }
+    return {};
   },
   mounted() {
-    // if localhost then export this component to console
+    // Si on est en localhost, expose le composant dans la console
     if (window.location.hostname === 'localhost') {
       window.app = this;
     }
   }
-}
+};
 </script>
 
 <style scoped>
-#app {
-  font-family: Arial, sans-serif;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-header {
-  background-color: #f4f4f4;
-  padding: 10px;
-  text-align: center;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 10px;
-}
-
-main {
-  margin-top: 20px;
-}
-
-footer {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 0.8em;
+.fill-height {
+  min-height: 95vh;
+  background: linear-gradient(135deg, #2196F3, #E91E63);
+  color: white;
+  overflow: hidden;
 }
 </style>

@@ -189,12 +189,12 @@ class SecurityController extends AbstractController
     {
         $user = $this->getUser();
         return $user ? $this->json([
-            'user' => [
+            'data' => [
                 'username' => $user->getUsername(),
                 'email' => $user->getEmail(),
                 'roles' => $user->getRoles(),
                 'isVerified' => $user->isVerified()
             ]
-        ]) : $this->json(['user' => null]);
+        ]) : $this->json(['data' => null]);
     }
 }

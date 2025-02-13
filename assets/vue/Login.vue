@@ -77,6 +77,13 @@ export default {
         printError('Register - catch', error.response)
       });
     }
+  },
+  mounted() {
+    // if localhost then export this component to console
+    if (window.location.hostname === 'localhost') {
+      window.app = this;
+    }
   }
 }
+
 </script>
