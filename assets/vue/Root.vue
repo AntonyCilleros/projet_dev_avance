@@ -19,10 +19,15 @@
 
     <v-main class="fill-height">
       <v-alert v-if="user && !user.isVerified" color="warning" top>
-        Veuillez vérifier votre adresse mail pour accéder à toutes les fonctionnalités
+        {{ $t('verify_mail') }}
       </v-alert>
       <v-container fluid class="pa-0 ma-0">
-        <router-view ref="app" @updateUser="getConnectedUser" class="router-view"></router-view>
+
+          <router-view ref="app" v-slot="{ Component }" @updateUser="getConnectedUser" class="router-view">
+            <keep-alive>
+              <component :is="Component" :user="user"/>
+            </keep-alive>
+          </router-view>
       </v-container>
     </v-main>
 
@@ -67,7 +72,7 @@ export default {
       });
     },
     getLanguages() {
-      axios.get('http://127.0.0.1:9090/api/languages?page=1').then(response => {
+      axios.get('/api/languages?page=1').then(response => {
         this.languages = response.data.member;
       }).catch(error => {
         printError('/api/languages - catch', error.response);

@@ -2,11 +2,10 @@
   <v-container class="fill-height d-flex justify-center align-center">
     <v-card class="pa-6 text-center" elevation="10" max-width="400">
       <v-card-title class="text-h5 font-weight-bold">
-        Accueil
+        {{ $t('home') }}
       </v-card-title>
       <v-card-text>
-        Un accueil vide.
-        Connectez-vous pour accéder à la page ci dessous.
+        {{ $t('home_message') }}
       </v-card-text>
       <v-btn color="primary" size="large" class="mt-4" :to="{ name: 'Emby' }" :disabled="!$root.user">
         EMBY
