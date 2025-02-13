@@ -20,10 +20,9 @@
    ```sh
    php bin/console doctrine:fixtures:load
 
-5. **Configurer l'application si nécessaire**
+5. **Configurer l'application**
 
-Copier le fichier .env en .env.local et ajuster les variables si nécessaire.
-
+.env.local doit contenir un MAILER_DSN valide.
 Le port symfony défini .symfony.local.yaml peut être modifié si nécessaire.
 
 
