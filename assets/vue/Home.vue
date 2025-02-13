@@ -22,11 +22,17 @@
 
 <script>
 export default {
-  name: 'App',
+  name: 'Home',
   data() {
     return {
       title: 'Mon Application Vue',
       message: 'Bienvenue dans mon application Vue.js!'
+    }
+  },
+  mounted() {
+    // if localhost then export this component to console
+    if (window.location.hostname === 'localhost') {
+      window.app = this;
     }
   }
 }

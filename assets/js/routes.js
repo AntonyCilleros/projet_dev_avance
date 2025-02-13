@@ -1,5 +1,5 @@
-import Home from './vue/Home.vue'
-import Login from './vue/Login.vue'
+import Home from '@/vue/Home.vue'
+import Login from '@/vue/Login.vue'
 
 export const routes = [
     {

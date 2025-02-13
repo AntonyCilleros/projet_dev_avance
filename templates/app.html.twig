@@ -8,8 +8,8 @@
   {{ encore_entry_script_tags('app') }}
 </head>
 <body>
-<div id="app">
-  {# L'appli Vue.js vivra ici #}
-</div>
+  <div id="app" data-user='{{ data|raw }}'>
+    {# L'appli Vue.js vivra ici #}
+  </div>
 </body>
 </html>

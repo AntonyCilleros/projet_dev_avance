@@ -1,0 +1,8 @@
+framework:
+    mailer:
+        message_bus: false
+        dsn: '%env(MAILER_DSN)%'
+        envelope:
+            sender: 'dahyun@velvet-room.tech'
+        headers:
+            From: 'dahyun@velvet-room.tech'

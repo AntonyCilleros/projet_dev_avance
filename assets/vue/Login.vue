@@ -6,7 +6,7 @@
           <v-card-title>Connexion</v-card-title>
           <v-card-text>
             <v-form @submit.prevent="login" v-if="!registerMode">
-              <v-text-field v-model="user" label="Email ou nom d'utilisateur" type="text" required></v-text-field>
+              <v-text-field v-model="email" label="Email" type="text" required></v-text-field>
               <v-text-field v-model="password" label="Mot de passe" type="password" required></v-text-field>
               <v-btn type="submit" color="primary" class="mb-3" block>Se connecter</v-btn>
               <v-btn color="primary" block @click="registerMode = true">Créer un compte</v-btn>
@@ -25,16 +25,17 @@
     </v-row>
   </v-container>
 </template>
-
+*
 <script>
 
 import axios from 'axios'
+import { printError } from '@/js/utils';
 
 export default {
   name: 'LoginPage',
   data() {
     return {
-      user: '', // email or username
+      email: '', // email or username
       password: '',
       registerMode: false,
       register: {
@@ -47,18 +48,34 @@ export default {
   },
   methods: {
     login() {
-
+      axios.post('/api/connection/login', { email: this.email, password: this.password }).then(response => {
+        if (response.status === 200) {
+          console.log('Connexion réussie');
+          this.$router.push({ name: 'Home' });
+          this.$emit('updateUser');
+        } else {
+          printError('Login', response)
+        }
+      }).catch(error => {
+        printError('Login - catch', error.response);
+      });
     },
     createAccount() {
-      axios.post('/user/create', register).then(response => {
-            if (response.data.success) {
-              console.log('Compte créé avec succès');
-            } else {
-              console.error('Erreur lors de la création du compte');
-            }
-          }).catch(error => {
-            console.error('Erreur lors de la requête:', error);
-          });
+      if (this.register.password !== this.register.passwordConfirmation) {
+        console.error('Les mots de passe ne correspondent pas');
+        return;
+      }
+      axios.post('/api/connection/register', this.register).then(response => {
+        if (response.status === 201) {
+          console.log('Compte créé avec succès');
+          this.$router.push({ name: 'Home' });
+          this.$emit('updateUser');
+        } else {
+          printError('Register', response)
+        }
+      }).catch(error => {
+        printError('Register - catch', error.response)
+      });
     }
   }
 }
