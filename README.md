@@ -27,6 +27,7 @@ Le HTTPS bloque l'accès à mon api donc je reste sur HTTP pour l'instant.
 5. **Configurer l'application**
 
 .env.local doit contenir une variable MAILER_DSN valide ainsi qu'une variable EMBY_API_KEY valide.
+.env doit avoir une variable SYMFONY_API_HOST valide aussi. SYMFONY_API_HOST correspond à l'adresse du projet Symfony API.
 Le port symfony défini .symfony.local.yaml peut être modifié si nécessaire.
 
 
