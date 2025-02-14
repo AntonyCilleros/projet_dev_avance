@@ -55,4 +55,13 @@ en prod :
     ```sh
    symfony server:start
 
+## Informations complémentaires
+L'utilisateur et le mail doivent être uniques.
+Le mail entré lors de l'inscription doit respecter le format normal des mails.
+Le mot de passe doit contenir :
+- 8 caractères
+- une lettre minuscule
+- une lettre majuscule
+- un chiffre
+
 Fait par Antony Cilleros GA1
